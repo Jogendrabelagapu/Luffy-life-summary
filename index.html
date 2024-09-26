@@ -16,7 +16,7 @@
             background-image: url('background.png');
             background-repeat: no-repeat;
             background-size: cover;
-            background-attachment: fixed; /* This makes the background image static */
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -31,6 +31,7 @@
             padding: 10px;
             margin: 10px 0;
             text-align: center;
+            cursor: pointer;
         }
 
         h1 {
@@ -54,7 +55,7 @@
         }
 
         .centered-paragraph {
-            text-align: center; /* Center-aligns this specific paragraph */
+            text-align: center;
             margin: 10px 40px;
         }
 
@@ -62,8 +63,7 @@
             list-style-type: none;
             color: gold;
             margin: 10px 40px;
-            text-align: left; /* Ensure left alignment for all lists */
-            display: block; /* Ensure it behaves like a block element */
+            text-align: left;
         }
 
         ul li {
@@ -111,7 +111,7 @@
 </head>
 
 <body>
-    <h1>MONKEY D LUFFY LIFE SUMMARY</h1>
+    <h1 id="title">MONKEY D LUFFY LIFE SUMMARY</h1>
     <br>
     <div class="tc-container">
         <img src="Joyboy.png" alt="First Image">
@@ -120,16 +120,24 @@
     <br>
 
     <!-- Audio Element for Background Music -->
-    <audio id="background-music" loop style="display: none;">
+    <audio id="background-music" loop>
         <source src="joyboy-song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
     <script>
+        // Get the audio element
+        var audio = document.getElementById('background-music');
+
+        // Play music when hovering over the title
+        document.getElementById('title').addEventListener('mouseenter', function() {
+            audio.play();
+        });
+
         // Automatically play the music when the page loads
         window.onload = function() {
-            var audio = document.getElementById('background-music');
-            audio.play();
+            audio.loop = true; // Ensure audio loops
+            audio.play(); // Start playing music automatically on page load
         };
     </script>
 
